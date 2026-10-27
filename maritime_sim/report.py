@@ -157,7 +157,7 @@ def render_step(output,record,net,config):
                f"Mean-CVaR 평가: {money(plan['objective_total_usd'])}",
                f"이후 평균 {money(plan['mean_remaining_usd'])} / CVaR {money(plan['cvar_remaining_usd'])}",
                f"후보 {plan['candidate_count']}개 · 계산 {plan['solve_seconds']:.2f}초",
-               f"λ={plan['risk_lambda']:g} / α={plan['cvar_alpha']:g}"]
+               f"위험 가중치 {plan['risk_lambda']:g} / CVaR 수준 {plan['cvar_alpha']:g}"]
     else:
         lines=[f"계산 기준시점: 출항 후 {before['time_h']:g}시간",
                f"잔여 기대비용: {money(plan['expected_total_usd'])}",

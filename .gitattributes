@@ -3,3 +3,4 @@
 *.ttf binary
 *.png binary
 *.zip binary
+maritime_sim/assets/fonts/OFL.txt whitespace=-blank-at-eof,-blank-at-eol
