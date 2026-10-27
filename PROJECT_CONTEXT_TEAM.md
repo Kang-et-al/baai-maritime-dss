@@ -3,6 +3,10 @@
 이 문서가 최신 인계 기준이다. PROJECT_CONTEXT.md는 복사해 온 개인 실험 단계의 역사적 기록이다.
 기준 태그 v0.2.0-draft.1, 저장소 Kang-et-al/baai-maritime-dss (비공개).
 
+팀원 AI 시작 안내는 docs/TEAM_AI_ONBOARDING.md에 있으며 README 첫 시작 부분에서 연결한다.
+안내문은 입력 정보, 설치·검증·단계/완주 실험, 브랜치·커밋·Push·PR·결과 공유를 포함한다.
+이 문서 보완은 main에 반영하며 기존 기준 태그/Release를 변경하지 않는다.
+
 ## 모형
 
 - 교과목용 DSS 구현이 목적. 기존 모형·태풍 생성·격자를 보존했다.

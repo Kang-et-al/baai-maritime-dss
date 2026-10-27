@@ -6,6 +6,15 @@
 
 ## 처음 시작하기
 
+**AI와 함께 처음 설치한다면 [팀원용 AI 설치·실험·업로드 안내문](docs/TEAM_AI_ONBOARDING.md)부터 확인하세요.**
+
+1. 먼저 GitHub 저장소 초대를 수락합니다. 비공개 저장소이므로 접근 권한이 필요합니다.
+2. 위 안내문을 열고 파일의 **Download raw file(원본 파일 다운로드)** 기능으로 `.md` 파일을 저장합니다. 또는 저장소를 복제한 뒤 `docs/TEAM_AI_ONBOARDING.md`를 사용합니다.
+3. 안내문의 입력 표에 운영체제·작업 폴더·GitHub 아이디·팀 식별자·원하는 작업·업로드 범위를 채웁니다.
+4. 파일을 AI에 첨부하고 “이 안내문에 따라 설치·검증 후 기준 설정으로 한 스텝 실행해줘”라고 요청합니다. 로컬 파일·터미널을 사용할 수 있는 AI 도구는 직접 작업할 수 있고, 일반 채팅에서는 안내받은 작업을 직접 수행합니다.
+
+직접 설치하려면 아래 순서를 따릅니다.
+
 1. GitHub 초대를 수락하고 이 저장소를 복제(Clone)합니다. GitHub Desktop을 사용해도 됩니다.
 2. Python **3.12.x**를 설치합니다. Windows는 `setup_windows.bat`을 실행합니다.
 3. Mac/Linux는 저장소 폴더에서 `python3.12 scripts/bootstrap.py`를 실행합니다.
@@ -42,6 +51,7 @@
 | [설치](docs/SETUP.md) | 처음 설치·버전·문제 해결 |
 | [팀 운영](docs/TEAM_GUIDE.md) | 브랜치·PR·Release·무료 운영 |
 | [AI 작업](docs/AI_WORKFLOW.md) | ChatGPT/Claude 등에 줄 시작 요청문 |
+| [팀원용 AI 전체 안내문](docs/TEAM_AI_ONBOARDING.md) | AI에 첨부할 설치·실험·수정·GitHub 공유 지침 |
 | [인계](PROJECT_CONTEXT_TEAM.md) | 코드 구조와 다음 작업 |
 | [확정 모형](docs/BASELINE.md) | 목적함수·시나리오 수식·파라미터 |
 | [실험 관리](docs/EXPERIMENTS.md) | 결과 등록·공유·재현 |
