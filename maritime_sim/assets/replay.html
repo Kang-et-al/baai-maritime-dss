@@ -1,0 +1,118 @@
+<div id="baai-voyage-replay">
+  <style>
+    #baai-voyage-replay{color:var(--foreground);font-size:var(--font-size-base)}
+    #baai-voyage-replay .voyage-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:20px;align-items:start}
+    #baai-voyage-replay canvas{display:block;width:100%;height:auto}
+    #baai-voyage-replay dl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0}
+    #baai-voyage-replay dt{color:var(--muted-foreground)}
+    #baai-voyage-replay dd{margin:0;text-align:right;font-weight:500;font-variant-numeric:tabular-nums}
+    #baai-voyage-replay .voyage-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0}
+    #baai-voyage-replay .voyage-swatch{display:inline-block;width:22px;height:4px;margin-right:6px;vertical-align:middle}
+    #baai-voyage-replay .voyage-slider{display:block;margin:14px 0}
+    @media(max-width:680px){#baai-voyage-replay .voyage-layout{grid-template-columns:minmax(0,1fr)}#baai-voyage-replay dl{grid-template-columns:1fr 1fr 1fr 1fr}}
+    @media(max-width:400px){#baai-voyage-replay dl{grid-template-columns:1fr 1fr}}
+  </style>
+  <h2 data-role="title">부산 → 홍콩</h2>
+  <p class="text-small text-muted" data-role="status" aria-live="polite"></p>
+  <div class="voyage-layout">
+    <canvas data-role="map" role="img" aria-label="선박의 실제 항적, 미래 경로, 현재와 예측 태풍 영향권">해상 운항 지도</canvas>
+    <div class="card">
+      <dl data-role="kpi"></dl>
+      <hr>
+      <div class="text-small" data-role="detail"></div>
+    </div>
+  </div>
+  <div class="voyage-legend text-small">
+    <span><i class="voyage-swatch" style="background:var(--viz-series-1)"></i>실제 항적 · 진할수록 빠름</span>
+    <span><i class="voyage-swatch" style="background:var(--viz-series-5)"></i>이번 3시간 계획</span>
+    <span><i class="voyage-swatch" style="background:var(--viz-series-2)"></i>미래 선박 · 점선</span>
+    <span><i class="voyage-swatch" style="background:var(--viz-series-3)"></i>예측 태풍 영향권</span>
+    <span><i class="voyage-swatch" style="background:var(--viz-series-4)"></i>현재 태풍 · 짙을수록 고파고</span>
+  </div>
+  <label class="form-label voyage-slider">출항 후 시점 <span data-role="time" class="tabular-nums"></span>
+    <input data-role="slider" class="form-range" type="range" min="0" value="0" step="1" aria-label="출항 후 시점 선택">
+  </label>
+  <div class="viz-controls">
+    <button data-role="previous" class="btn" type="button">이전 시점</button>
+    <button data-role="play" class="btn btn-primary" type="button">재생</button>
+    <button data-role="next" class="btn" type="button">다음 시점</button>
+    <span class="text-small text-muted" data-role="range"></span>
+  </div>
+  <p class="text-small text-muted">속도 색상은 실제 이동거리÷이동시간인 실효속도 기준입니다. 태풍 채움은 2·4·5·7m 파고 범위이며, 예측 영향권은 12시간 간격으로 표시합니다.</p>
+  <script type="application/json" data-role="data">__REPLAY_DATA__</script>
+  <script>
+  (()=>{
+    const root=document.getElementById('baai-voyage-replay');
+    const D=JSON.parse(root.querySelector('[data-role="data"]').textContent);
+    const el=k=>root.querySelector(`[data-role="${k}"]`),canvas=el('map'),ctx=canvas.getContext('2d');
+    const frames=D.frames,slider=el('slider');
+    let index=0,timer=null;
+    const stored=window.openai?.widgetState?.modelContent;
+    if(stored?.run===D.run&&Number.isInteger(stored.frame))index=Math.max(0,Math.min(frames.length-1,stored.frame));
+    else if(D.format==='live')index=frames.length-1;
+    slider.max=Math.max(0,frames.length-1);
+    const fmt=x=>Number(x).toLocaleString('ko-KR',{maximumFractionDigits:2});
+    const color=k=>getComputedStyle(root).getPropertyValue(k).trim();
+    function rgb(s){ctx.fillStyle=s;const normalized=ctx.fillStyle;let m=normalized.match(/^#([0-9a-f]{6})$/i);if(m)return [0,2,4].map(i=>parseInt(m[1].slice(i,i+2),16));m=normalized.match(/[\d.]+/g);return m?m.slice(0,3).map(Number):[60,100,140];}
+    function rgba(s,a){return `rgba(${rgb(s).join(',')},${a})`;}
+    function shade(base,speed){const c=rgb(base),b=rgb(color('--background')),r=.35+.65*Math.min(1,Math.max(0,speed/18));return `rgb(${c.map((v,j)=>Math.round(v*r+b[j]*(1-r))).join(',')})`;}
+    function radius(I,h){const w=D.weather,peak=w.peak_wave_m*I;if(I<=0||peak<=h)return 0;const m=w.radius_scales_with_intensity?I:1;return Math.min(w.cutoff_km*m,w.scale_km*m*Math.sqrt(Math.log(peak/h)));}
+    function stop(){if(timer)clearInterval(timer);timer=null;el('play').textContent='재생';}
+    function persist(){window.openai?.setWidgetState?.({modelContent:{run:D.run,frame:index,time_h:frames[index]?.time},privateContent:null})?.catch(()=>{});}
+    function draw(){
+      if(!frames.length){el('status').textContent='아직 저장된 스텝이 없습니다.';return;}
+      const f=frames[index],width=Math.max(270,Math.round(canvas.parentElement.getBoundingClientRect().width));
+      const height=Math.round(width*1.04),dpr=Math.min(2,window.devicePixelRatio||1);
+      canvas.width=width*dpr;canvas.height=height*dpr;canvas.style.height=height+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+      const xmin=-540*1.852,xmax=486*1.852,ymin=-540*1.852,ymax=594*1.852;
+      const sc=Math.min((width-20)/(xmax-xmin),(height-20)/(ymax-ymin));
+      const ox=width/2-(xmin+xmax)/2*sc,oy=height/2+(ymin+ymax)/2*sc;
+      const proj=window.d3?.geoIdentity().reflectY(true).scale(sc).translate([ox,oy]);
+      const xy=p=>proj?proj(p):[ox+p[0]*sc,oy-p[1]*sc];
+      const node=id=>xy(D.xy[id]);
+      const actual=color('--viz-series-1'),future=color('--viz-series-2'),forecast=color('--viz-series-3'),storm=color('--viz-series-4'),current=color('--viz-series-5'),fg=color('--foreground'),bg=color('--background');
+      ctx.fillStyle=bg;ctx.fillRect(0,0,width,height);ctx.save();ctx.beginPath();ctx.rect(1,1,width-2,height-2);ctx.clip();
+      ctx.fillStyle=color('--muted');ctx.strokeStyle=color('--border');ctx.lineWidth=.6;
+      if(window.d3){ctx.beginPath();window.d3.geoPath(proj,ctx)(D.land);ctx.fill('evenodd');ctx.stroke();}
+      else for(const polygon of D.land.coordinates){ctx.beginPath();for(const ring of polygon){ring.forEach((p,j)=>{const q=xy(p);j?ctx.lineTo(...q):ctx.moveTo(...q)});ctx.closePath();}ctx.fill('evenodd');ctx.stroke();}
+      const footprint=(z,c,opacity)=>{const p=xy(z);for(const [h,a] of [[2,.35],[4,.55],[5,.8],[7,1]]){const r=radius(z[2],h)*sc;if(!r)continue;ctx.beginPath();ctx.arc(...p,r,0,Math.PI*2);ctx.fillStyle=rgba(c,opacity*a);ctx.fill();ctx.strokeStyle=rgba(c,opacity+.25);ctx.lineWidth=.8;ctx.stroke();}};
+      for(let j=0;j<f.tracks.length;j++){
+        const t=f.tracks[j];for(const z of t)if(z[3]>f.time&&Math.round(z[3]-f.time)%12===0){footprint(z,forecast,.20);if(j===1){const p=xy(z);ctx.fillStyle=fg;ctx.font='12px system-ui';ctx.fillText(`+${fmt(z[3]-f.time)}h`,p[0]+5,p[1]-5);}}
+        ctx.beginPath();t.filter(z=>z[2]>.02).forEach((z,k)=>{const p=xy(z);k?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.strokeStyle=rgba(forecast,j===1?.9:.45);ctx.lineWidth=j===1?2.7:1.4;ctx.stroke();
+      }
+      footprint(f.storm,storm,.55);
+      if(f.storm[2]>.02){const p=xy(f.storm);ctx.beginPath();ctx.arc(...p,5,0,Math.PI*2);ctx.fillStyle=storm;ctx.fill();}
+      function segment(a,c,w,dashed=false,alpha=1){const p=node(a[0]),q=node(a[1]);ctx.strokeStyle=rgba(shade(c,a[2]),alpha);ctx.lineWidth=w;ctx.setLineDash(dashed?[7,5]:[]);ctx.beginPath();ctx.moveTo(...p);ctx.lineTo(...q);ctx.stroke();ctx.setLineDash([]);if(a[0]===a[1]){ctx.beginPath();ctx.arc(...p,3,0,Math.PI*2);ctx.stroke();}}
+      f.future.forEach((route,s)=>route.forEach(a=>segment(a,future,s===f.representative?2.8:1.5,true,s===f.representative?.9:.25)));
+      for(const a of D.executed)if(a[4]<=f.time+1e-8){segment(a,bg,6.8);segment(a,actual,4.5);}
+      f.first.forEach(a=>segment(a,current,3.2,true,.95));
+      const circle=(p,r,fill,stroke)=>{ctx.beginPath();ctx.arc(...p,r,0,Math.PI*2);ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();};
+      circle(node(D.start),8,bg,fg);
+      const g=node(D.goal);ctx.beginPath();ctx.moveTo(g[0],g[1]-10);ctx.lineTo(g[0]+10,g[1]);ctx.lineTo(g[0],g[1]+10);ctx.lineTo(g[0]-10,g[1]);ctx.closePath();ctx.fillStyle=future;ctx.fill();ctx.strokeStyle=bg;ctx.lineWidth=2;ctx.stroke();
+      if(index>0){const prev=node(frames[index-1].node);ctx.fillStyle=bg;ctx.fillRect(prev[0]-5,prev[1]-5,10,10);ctx.strokeStyle=current;ctx.lineWidth=2;ctx.strokeRect(prev[0]-5,prev[1]-5,10,10);}
+      circle(node(f.node),9,current,bg);
+      const text=(p,label,size)=>{ctx.font=`500 ${size}px system-ui`;ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle=bg;ctx.strokeText(label,...xy(p));ctx.fillStyle=fg;ctx.fillText(label,...xy(p));};
+      text(D.labels[0],'부산 · 출발',width<420?14:20);text(D.labels[1],'홍콩 · 도착',width<420?14:20);
+      ctx.restore();
+      slider.value=index;root.dataset.viewerFrame=index;root.dataset.viewerLast=frames.length-1;el('title').textContent=`${D.name} · 부산 → 홍콩`;
+      el('status').textContent=`${D.run} · ${f.terminal?'최종 상태':`의사결정 ${f.step}`} · 예측 발행 ${fmt(f.issued)}h · ${f.status==='arrived'?'홍콩 도착':f.status==='running'?'운항 중':f.status}`;
+      const metrics=[['경과시간',`${fmt(f.time)} h`],['현재 노드',`N${f.node}`],['누적 연료',`${fmt(f.fuel)} t`],['실제 누적비용',`$${fmt(f.cost)}`],['이동거리',`${fmt(f.distance)} nm`],['대기시간',`${fmt(f.wait)} h`],['납기',`${fmt(f.due)} h`]];
+      el('kpi').innerHTML=metrics.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+      const costText=v=>v==null?'계획 불가':'$'+fmt(v);
+      const evaluation=f.objective_type==='mean_cvar'?`Mean-CVaR 평가값: ${costText(f.objective)}. 이후 평균: ${costText(f.mean_future)}, CVaR: ${costText(f.cvar_future)} (λ=${fmt(f.risk_lambda)}, α=${fmt(f.cvar_alpha)}).`:`결정 시점 잔여 기대비용: ${costText(f.expected)}.`;
+      el('detail').textContent=f.terminal?'운항 종료 상태입니다. 이후 미래 계획은 표시하지 않습니다.':`${evaluation} ${f.issued<f.time?'최근 발행된 조건부 계획입니다.':'다음 3시간 계획과 그 이후 조건부 경로를 표시합니다.'}`;
+      el('time').textContent=`${fmt(f.time)}시간`;el('range').textContent=`${index+1} / ${frames.length} 시점 · 0–${fmt(frames.at(-1).time)}시간`;
+      el('previous').disabled=index===0;el('next').disabled=index===frames.length-1;
+      slider.setAttribute('aria-valuetext',`출항 후 ${fmt(f.time)}시간`);
+    }
+    function select(i,save=true){index=Math.max(0,Math.min(frames.length-1,i));draw();if(save)persist();}
+    slider.addEventListener('input',()=>{stop();select(Number(slider.value));});
+    el('previous').addEventListener('click',()=>{stop();select(index-1);});el('next').addEventListener('click',()=>{stop();select(index+1);});
+    el('play').addEventListener('click',()=>{if(timer){stop();return;}if(index===frames.length-1)select(0);el('play').textContent='일시정지';timer=setInterval(()=>{select(index+1);if(index===frames.length-1)stop();},1000);});
+    window.addEventListener('openai:set_globals',event=>{const s=event.detail?.globals?.widgetState?.modelContent;if(s?.run===D.run&&Number.isInteger(s.frame)){stop();select(s.frame,false);}});
+    new ResizeObserver(()=>draw()).observe(canvas.parentElement);
+    new MutationObserver(()=>draw()).observe(document.documentElement,{attributes:true,attributeFilter:['class','style','data-theme']});
+    draw();
+  })();
+  </script>
+</div>

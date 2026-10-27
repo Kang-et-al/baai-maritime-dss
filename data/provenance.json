@@ -1,0 +1,14 @@
+{
+  "network_source": "Previously constructed Busan-Hong Kong 18nm grid, copied unchanged",
+  "source_snapshot": "Previously constructed project grid; shared CSV files are the authoritative network snapshot",
+  "land_source": "Natural Earth 1:10m land, v5.1.1, public domain",
+  "land_url": "https://www.naturalearthdata.com/downloads/10m-physical-vectors/",
+  "land_use": "Display only; navigability is defined by supplied active CSV edges",
+  "projection": "+proj=lcc +lat_0=28 +lon_0=122.5 +lat_1=20 +lat_2=36 +datum=WGS84 +units=m",
+  "stored_map_xy_unit": "km",
+  "model_arc_distance_nm": 18,
+  "active_nodes": 2286,
+  "active_directed_arcs": 8600,
+  "weather_api_used": false,
+  "legacy_config_not_imported": "Earlier 6h rolling and API metadata intentionally excluded"
+}

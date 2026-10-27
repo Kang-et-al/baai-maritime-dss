@@ -1,0 +1,5 @@
+# Run from a Git checkout; use scripts/bootstrap.py instead of building a wheel.
+[tool.baai]
+baseline-ref = "v0.2.0-draft.1"
+reference-python = "3.12"
+baseline-config = "configs/baseline.json"
