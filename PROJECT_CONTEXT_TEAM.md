@@ -34,3 +34,11 @@
 개발 중 소스 해시 변경은 정상이다. lock을 자동 재작성하지 않는다.
 이어하기는 실험 생성 당시 코드/데이터/설정 해시가 유지되어야 한다. 버전을 바꾸면 새 실험을 만든다.
 운영은 docs/TEAM_GUIDE.md, 실행은 README.md, 수학/생성 규칙은 docs/BASELINE.md를 따른다.
+
+## 공유 검증 결과
+
+Windows 새 가상환경 및 GitHub 복제본 설치/21개 검증 통과. 복제본 첫 3시간 실행과 기준 첫 스텝이 일치한다.
+최종 기준 실험은 outputs/baseline_reference_final, 소스 커밋 69fc1a63214ec837427cdb8ab2191d7dce215f76.
+44스텝·132시간에 홍콩 도착, 76.2057095톤·실제 111,723.4257달러·대기 2시간.
+results/index.csv에 등록했으며 Release에 baseline-mean-cvar-v1.zip을 첨부한다.
+검증 상세는 docs/SHARED_VALIDATION.md. 팀원 GitHub ID와 초대 수락 후 각자의 PC 설치/Push 확인이 남아 있다.

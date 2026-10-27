@@ -48,3 +48,5 @@
 
 AI 도구에는 프로젝트 폴더를 열고 AGENTS.md부터 읽도록 요청하세요. Claude용 CLAUDE.md도 같은 지침을 연결합니다.
 현재 모형에 AI API 호출은 없으며, 개인 AI 도구 사용료는 선택한 서비스 정책에 따릅니다.
+
+공유 기준 실행과 검증 범위는 [Release 설명](docs/RELEASE_NOTES.md)과 [검증 기록](docs/SHARED_VALIDATION.md)을 참고하세요.

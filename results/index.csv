@@ -1,1 +1,2 @@
 experiment_id,baseline_ref,git_commit,config_sha256,status,time_h,total_cost_usd,artifact_url,notes
+baseline-mean-cvar-v1,v0.2.0-draft.1,69fc1a63214ec837427cdb8ab2191d7dce215f76,23beba230597e6cc96e48d32b8801016141d283d758710362d9dde77b928fa59,arrived,132.0,111723.42570153062,https://github.com/Kang-et-al/baai-maritime-dss/releases/tag/v0.2.0-draft.1,
