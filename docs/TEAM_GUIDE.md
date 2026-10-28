@@ -28,6 +28,8 @@ GitHub Desktop: Current branch → New branch → Commit → Publish branch → 
 
 ## 버전 보존
 
+상세 절차와 AI 요청문은 [VERSIONING.md](VERSIONING.md), 배포 목록은 [VERSIONS.md](VERSIONS.md)를 따른다.
+
 - v0.2.0-draft.1은 최초 공유 초안입니다. 태그를 이동/덮어쓰지 않습니다.
 - 재현: 새 Clone 폴더 → 해당 태그 선택 → 기준 환경 설치 → 같은 설정 실행.
 - main은 최신 개선 버전이며, 독립 변형은 별도 태그/Release로 남길 수 있습니다.

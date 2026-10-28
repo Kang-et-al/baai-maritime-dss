@@ -1,5 +1,8 @@
 # 팀 공유 초안 — 다음 작업 인계
 
+모델 개선과 업로드 절차는 docs/VERSIONING.md, 보존 버전 목록은 docs/VERSIONS.md에 있다.
+초기 태그를 보존하며 작업 브랜치 → 검증/커밋 → 실험 → Push/PR → 요청 시 새 태그/Release 순서로 운영한다.
+
 이 문서가 최신 인계 기준이다. PROJECT_CONTEXT.md는 복사해 온 개인 실험 단계의 역사적 기록이다.
 기준 태그 v0.2.0-draft.1, 저장소 Kang-et-al/baai-maritime-dss (비공개).
 

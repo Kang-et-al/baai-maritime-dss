@@ -2,6 +2,9 @@
 
 먼저 README.md, PROJECT_CONTEXT_TEAM.md, docs/BASELINE.md, docs/TEAM_GUIDE.md를 읽는다.
 이 저장소의 최상위 폴더에서 Python을 실행한다. 별도의 솔버·기상 API·AI API 키는 필요 없다.
+모델 개선·GitHub 업로드·버전 배포 작업에서는 docs/VERSIONING.md와 docs/VERSIONS.md도 읽는다.
+개선 코드는 작업 브랜치에 Push하고, main 병합과 새 태그/Release 생성은 해당 범위의 사용자 요청에 따른다.
+Push만으로 새 버전이 생성되었다고 보고하지 않는다. 배포 태그는 실제 실행 소스 커밋을 가리키며 기존 태그는 이동하지 않는다.
 
 ## 보존할 기준
 - 배포 기준 태그: v0.2.0-draft.1. 정본 설정 configs/baseline.json, 태풍 생성기 trend-path-intensity-3x3-v1.
