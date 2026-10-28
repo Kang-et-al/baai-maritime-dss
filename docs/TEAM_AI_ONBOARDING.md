@@ -66,6 +66,8 @@ GitHub 초대를 수락해야 비공개 저장소를 받을 수 있습니다. �
    - docs/SHARED_VALIDATION.md
    PROJECT_CONTEXT.md는 과거 개인 단계의 기록이므로 최신 팀 상태와 혼동하지 마라.
 4. 최초 기준 확인은 v0.2.0-draft.1에서 진행해라.
+   태그를 선택하기 전에 최신 main의 AGENTS.md, docs/VERSIONING.md, docs/VERSIONS.md를 읽어라.
+   초기 태그에는 이후 추가된 지침 파일이 없을 수 있다. 읽은 최신 운영 규칙을 유지하며 과거 모델을 실행하고, 원래 태그를 고치지 마라.
    수정이 필요하면 해당 태그에서 experiment/<팀식별자>/onboarding 같은 새 브랜치를 만들어라.
    기존 작업을 강제 초기화하거나 main에 직접 덮어쓰지 마라.
 5. Python 3.12.x를 확인하고 저장소 폴더에 .venv를 만들어라.
@@ -158,6 +160,7 @@ replay는 도착 또는 종료 조건까지 진행한다. --steps를 함께 주�
 ## 7. Git으로 버전과 결과를 공유하는 절차
 
 업로드 작업 전 docs/VERSIONING.md와 docs/VERSIONS.md를 읽어라. Push는 새 버전 번호를 자동 생성하지 않는다.
+이미 설치한 환경이라면 원격 main의 최신 운영 지침을 먼저 확인해라. 수정 중인 파일은 보존하고 무리한 Pull/초기화로 덮어쓰지 마라.
 재현할 개선 버전은 실제 실행 커밋을 가리키는 새 태그/Release로 남기고 버전 목록에 추가해라.
 
 운영 원칙:

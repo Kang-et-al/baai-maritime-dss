@@ -1,5 +1,8 @@
 # 팀 공유 초안 — 다음 작업 인계
 
+AI 진입 문서 AGENTS.md, CLAUDE.md, GEMINI.md는 공통 버전 관리 지침을 연결한다.
+과거 태그 실행 전 최신 main의 운영 문서를 먼저 읽는다. 업로드 절차는 지침 기반이며 서버 강제 정책은 아니다.
+
 모델 개선과 업로드 절차는 docs/VERSIONING.md, 보존 버전 목록은 docs/VERSIONS.md에 있다.
 초기 태그를 보존하며 작업 브랜치 → 검증/커밋 → 실험 → Push/PR → 요청 시 새 태그/Release 순서로 운영한다.
 
