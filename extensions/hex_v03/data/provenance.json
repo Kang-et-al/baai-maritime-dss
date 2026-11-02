@@ -1,0 +1,16 @@
+{
+  "reference_tag": "v0.2.0-draft.1",
+  "source_commit": "d869ab0e17915e46ddb942c2ebe181a73a537c2f",
+  "copied_reference_sha256": {
+    "data/land_projected.json": "70a5dde469e428c1aea088ea3eff0d522a1cb01dfea865c4c1755ac7fccd288c",
+    "configs/baseline.json": "d612a4c1bdc033d90e60c62cf9a2c8070f2a943ac836c6784e7ba7e87de7a32e",
+    "maritime_sim/risk.py": "0de750b0c4218e7f2f4938edaec8db44deac128845b0acc0695cbd068eee9035"
+  },
+  "land_source": "Natural Earth 1:10m land v5.1.1, public domain; copied from original local project",
+  "projection": "+proj=lcc +lat_0=28 +lon_0=122.5 +lat_1=20 +lat_2=36 +datum=WGS84",
+  "land_stored_unit": "km",
+  "engine_xy_unit": "nautical miles",
+  "weather_api_used": false,
+  "solver_used": false,
+  "note": "Original baseline folder is not required at runtime and was not modified"
+}

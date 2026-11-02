@@ -1,0 +1,169 @@
+{
+  "config": {
+    "model_id": "hex-propulsion-response-v2",
+    "scenario_generator": "observed-trend-path-intensity-3x3-v2",
+    "risk": {
+      "lambda": 0.0,
+      "alpha": 0.8
+    },
+    "spacing_nm": 18.0,
+    "bounds_nm": [
+      -540.0,
+      486.0,
+      -540.0,
+      594.0
+    ],
+    "time_step_h": 0.25,
+    "max_replan_h": 3.0,
+    "horizon_h": 168.0,
+    "simulation_limit_h": 336.0,
+    "speeds_kn": [
+      0.0,
+      6.0,
+      12.0,
+      18.0
+    ],
+    "accel_kn_per_h": 24.0,
+    "decel_kn_per_h": 24.0,
+    "min_turn_radius_nm": 0.5,
+    "max_yaw_deg_per_min": 6.0,
+    "mild_turn_cap_kn": 12.0,
+    "sharp_turn_cap_kn": 6.0,
+    "fuel_normal_tph": 0.5,
+    "fuel_wait_tph": 0.05,
+    "accel_extra_t_per_kn2": 0.0001,
+    "turn_extra_t_per_rad": 0.0,
+    "fuel_usd_per_t": 600.0,
+    "time_usd_per_h": 500.0,
+    "late_usd_per_h": 1000.0,
+    "due_h": 146.0,
+    "safety_buffer_nm": 0.25,
+    "curve_samples": 97,
+    "initial": {
+      "time_h": 0.0,
+      "x_nm": 342.0,
+      "y_nm": 432.0,
+      "speed_kn": 0.0,
+      "heading_deg": 240.0
+    },
+    "goal_nm": [
+      -468.0,
+      -342.0
+    ],
+    "initial_forecast_velocity_kmh": [
+      -25.0,
+      25.0
+    ],
+    "initial_forecast_intensity_trend_per_h": 0.0,
+    "mode": "calm",
+    "forecast": {
+      "motion_decay_h": 48.0,
+      "intensity_trend_h": 12.0,
+      "decay_after_h": 24.0,
+      "intensity_decay_h": 48.0,
+      "track_offset_km": 100.0,
+      "track_ramp_h": 24.0,
+      "intensity_offset": 0.15,
+      "intensity_ramp_h": 12.0
+    },
+    "weather": {
+      "peak_wave_m": 10.0,
+      "scale_km": 280.0,
+      "cutoff_km": 840.0
+    },
+    "typhoon_waypoints": [
+      [
+        0,
+        132,
+        23,
+        0.2
+      ],
+      [
+        12,
+        130,
+        27,
+        0.55
+      ],
+      [
+        24,
+        127.8,
+        31,
+        1
+      ],
+      [
+        36,
+        125,
+        34,
+        0.95
+      ],
+      [
+        48,
+        123,
+        36,
+        0.55
+      ],
+      [
+        60,
+        121,
+        37,
+        0.2
+      ],
+      [
+        72,
+        120,
+        38,
+        0
+      ]
+    ],
+    "compute_limit_s": 600.0,
+    "strict_positive_probability_feasibility": true,
+    "emergency_policy": "dynamic_wave_drag_no_wave_ban",
+    "state_alignment_note": "Actual speed evolves from propulsion and continuous wave drag; fixed sea-state bans removed; steering constraints unchanged",
+    "propulsion": {
+      "wave_drag_kn2_per_m2": 9.0,
+      "response_h": 0.25,
+      "reference_kn": 12.0,
+      "integration_h": 0.008333333333333333,
+      "wave_table_step_m": 0.5,
+      "wave_table_max_m": 10.0,
+      "transition_limit_h": 12.0,
+      "threads": 8,
+      "dp_integration_h": 0.08333333333333333
+    },
+    "experiment_schedule": "fixed_3h_selective"
+  },
+  "core": {
+    "hex_dss\\__init__.py": "49b2c330bc36b00a410283274aba16628ff5a877b51a1817f81b5faad93850db",
+    "hex_dss\\__main__.py": "c6bc32a0b2a81aa4a6179144e92b06bd3968d3ad66b30f2a438846ee1df4d11c",
+    "hex_dss\\checkpoint.py": "53671fd74d8e62518a7f96ed049f53a27e962690d89f18fb5a7f3f64ad656617",
+    "hex_dss\\config.py": "de9fb78d2db994d89781a6cbcb7d4cff0075265c4de020631f8d51dab022d692",
+    "hex_dss\\diagnose_decision.py": "5b541bb63dfdf9993df1c2d8f6150c601fe2aab211a220de9b4e10570e263a91",
+    "hex_dss\\dp.py": "ed71988e8d02be8be8a032003cc6a347de77f634ad5a338a1de9c4cc91c2de39",
+    "hex_dss\\drive_dp.py": "7b637ae0132f6b0af5dfec4d4c695113bd69b7120dc387d1511e6ad71d112077",
+    "hex_dss\\drive_lattice.py": "4e494d7209778e33ccb1c94450b2a7a6c5c67248857ccc9190c61cd399d2b029",
+    "hex_dss\\drive_motion.py": "9a391fe262ee3efdd069529baeaa76c85655818809ef1541b623eedf4af7ae5d",
+    "hex_dss\\drive_planner.py": "dac2d5667fa45e41957cb5be54772f4a4a9d22c1e19488d18115e850217136c8",
+    "hex_dss\\drive_report.py": "de80a889e6aa07794e028b91d986d56ae8f097d9e3c290ea9b0a849720fb10a1",
+    "hex_dss\\executor.py": "6913bd89ad15f1175c90301eed601c9804ec0f7bf21039729baaa50079d7f574",
+    "hex_dss\\lattice.py": "2294b6919097dfa2497c33f0289b58305dc0665d333cf693b446df680416c7ac",
+    "hex_dss\\motion.py": "30dabee8665685f7b31d1624eb26325456828589de3763e900c5cf26213a2604",
+    "hex_dss\\network.py": "58cddc1e52d0d8d2668af3a1cdbe8d318eb222774ba1e9857f91d36036848268",
+    "hex_dss\\planner.py": "49c88767cb05d623f9706884484951274dca0901c3a5a88d47beba17e63afe41",
+    "hex_dss\\propulsion.py": "031cd37c9b5fcc0b7e289db025bf02393c80d407d2682f213eb0d0488f5a75c7",
+    "hex_dss\\report.py": "232e16150b8c244bda0616e243757c91c1433b89e6cafcd1ac27f954b7c9fe3a",
+    "hex_dss\\risk.py": "0de750b0c4218e7f2f4938edaec8db44deac128845b0acc0695cbd068eee9035",
+    "hex_dss\\rolling_experiment.py": "ce48e129e9bcb5f866435425157629ba1705156bf4f362740a064c6ca6b7bc97",
+    "hex_dss\\runtime.py": "1b13011323c3a93963255a55fc71eb7f1a3bc8bf3cd50615151b2f9958a36574",
+    "hex_dss\\weather.py": "d9069253ad0e80a5d599022c0391ee1fa6b2dde6bf68c927e5b105bf56bb4b6b",
+    "configs\\hex_mean.json": "a672c4668de587017db8beab116fd8b6e93df56d62f07d2fcde7cfd198f465b8",
+    "configs\\hex_propulsion.json": "0995220c53882508ccf14bde3e186c11c598847e5d8a8bcc232fb0864b861d6c",
+    "data\\land_projected.json": "70a5dde469e428c1aea088ea3eff0d522a1cb01dfea865c4c1755ac7fccd288c",
+    "data\\original_baseline_config.json": "d612a4c1bdc033d90e60c62cf9a2c8070f2a943ac836c6784e7ba7e87de7a32e",
+    "data\\provenance.json": "057fb2f564fc018fe2663965613ff97af40ad62cd1c2cd0a44a18771a0a8398b"
+  },
+  "engine": {
+    "kernel.py": "ccefa7ac253e1b234a390b2b3693f2341bcc0abf9e8fa77a76570c09fbb7eb35",
+    "kernel_threaded.py": "8b202197eef1b80b88992f910157c7aacae27b0d9115260e4d815126091ad211",
+    "voyage.py": "7ecf02e4e7a1e3db4d3955fcaef61d5f5bb7b117556ce7c6a00dba1048b86b3c"
+  }
+}

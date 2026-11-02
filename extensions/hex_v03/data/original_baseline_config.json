@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "baseline_id": "busan-hongkong-mean-cvar-v1",
+  "scenario_generator": "trend-path-intensity-3x3-v1",
+  "risk": {
+    "lambda": 0.5,
+    "alpha": 0.8
+  },
+  "time_step_h": 0.25,
+  "rolling_h": 3,
+  "horizon_h": 168,
+  "simulation_limit_h": 336,
+  "normal_kn": 12,
+  "fast_kn": 18,
+  "start_node": 3181,
+  "goal_node": 642,
+  "arc_distance_nm": 18,
+  "fuel_normal_tph": 0.5,
+  "fuel_wait_tph": 0.05,
+  "fuel_usd_per_t": 600,
+  "time_usd_per_h": 500,
+  "late_usd_per_h": 1000,
+  "due_multiplier": 1.1,
+  "wave_thresholds_m": [
+    2,
+    4,
+    5
+  ],
+  "speed_factors": [
+    1,
+    0.6666666666666666,
+    0.5
+  ],
+  "weather": {
+    "peak_wave_m": 10,
+    "scale_km": 280,
+    "cutoff_km": 840,
+    "radius_scales_with_intensity": true
+  },
+  "forecast": {
+    "track_offset_km": 100,
+    "track_ramp_h": 24,
+    "intensity_offset": 0.15,
+    "intensity_ramp_h": 12,
+    "motion_decay_h": 48,
+    "intensity_trend_h": 12,
+    "decay_after_h": 24,
+    "intensity_decay_h": 48,
+    "fallback_heading_xy": [
+      0,
+      1
+    ]
+  },
+  "typhoon_waypoints": [
+    [
+      0,
+      132,
+      23,
+      0.2
+    ],
+    [
+      12,
+      130,
+      27,
+      0.55
+    ],
+    [
+      24,
+      127.8,
+      31,
+      1
+    ],
+    [
+      36,
+      125,
+      34,
+      0.95
+    ],
+    [
+      48,
+      123,
+      36,
+      0.55
+    ],
+    [
+      60,
+      121,
+      37,
+      0.2
+    ],
+    [
+      72,
+      120,
+      38,
+      0
+    ]
+  ],
+  "mode": "typhoon",
+  "seed": 42
+}

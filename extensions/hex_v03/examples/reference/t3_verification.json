@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "new_wall_seconds": 525.166155999992,
+  "old_active_seconds": 771.5214335001074,
+  "matched_full_wall_seconds": 859.5319137000479,
+  "new_dp_worker_seconds": 1334.4007960999152,
+  "matched_full_dp_worker_seconds": 2097.44103469979,
+  "totals": {
+    "dp_seconds": 1334.4007960999152,
+    "transfer_calls": 4363386693,
+    "direct_integrations": 22903619,
+    "integration_iterations": 1237856847,
+    "states_solved": 250099054,
+    "pre_transfer_prunes": 730944,
+    "post_transfer_prunes": 1958243861,
+    "checkpoint_seconds": 6.781697500264272
+  },
+  "old_comparison_max_error_usd": 7.275957614183426e-11,
+  "matched_comparison_max_error_usd": 7.275957614183426e-11,
+  "same_core_config_state": true,
+  "epsilon_usd": 0.01,
+  "candidate_2_objective_usd": 84348.03761768402
+}

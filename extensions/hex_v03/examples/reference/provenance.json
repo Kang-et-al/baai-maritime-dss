@@ -1,0 +1,11 @@
+{
+  "historical_results": true,
+  "current_auto_runner_executed_full_voyage": false,
+  "note": "Copied byte-for-byte from preserved completed runs. See result documents for interrupted/restarted sessions and wrapper migrations. Identities describe numerical source fingerprints; do not substitute this release candidate commit as the execution commit.",
+  "sha256": {
+    "comparison.json": "c95e37df0d6140de00ac0fe83b33c7027133f7ce93f96184ec8aa776de02dd1f",
+    "t3_verification.json": "18c9cd9f648799bd2f5f2ea321a3d5fff1b060d4760fd735d600dab7d65844f9",
+    "typhoon_source_identity.json": "9d06efd2d5775d0928924cb8ac2328dd0bbe7ee23caf83d4d8c8d8ebf9193bc6",
+    "calm_source_identity.json": "df3a422dfbd934d629bc2157d84869072ae6e729e45193d0c144e603d74f5b2a"
+  }
+}
