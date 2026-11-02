@@ -1,3 +1,9 @@
+# 팀 기본 버전
+
+현재 기본: **v0.3.0-draft.1**, 육각·연속 운항 확장판. [소스](https://github.com/Kang-et-al/baai-maritime-dss/tree/v0.3.0-draft.1) · [Release](https://github.com/Kang-et-al/baai-maritime-dss/releases/tag/v0.3.0-draft.1) · 실행 폴더 extensions/hex_v03.
+
+이 배포는 통합 커밋의 작은 문제/회귀 검증을 기준으로 한다. 과거 완주 증거는 당시 소스 identity와 함께 보존했으며 새 배포에서 전체 항해를 재실행한 것은 아니다.
+
 # 보존한 모델 버전
 
 | 버전 | 성격 | 소스 | 결과/설명 |

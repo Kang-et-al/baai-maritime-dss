@@ -1,0 +1,123 @@
+{
+  "verification": "passed",
+  "same_model_except_weather_mode": true,
+  "typhoon": {
+    "mode": "typhoon",
+    "arrived": true,
+    "steps": 36,
+    "arrival_h": 107.02674625390368,
+    "distance_nm": 1251.8740563254255,
+    "fuel_t": 70.21807472517607,
+    "operating_cost_usd": 95644.21796205748,
+    "late_cost_usd": 0,
+    "total_cost_usd": 95644.21796205748,
+    "max_wave_m": 5.80063535136016,
+    "wave_exposure_h": {
+      "2": 11.112401056220747,
+      "4": 6.245373380632518,
+      "6": 0.0
+    },
+    "near_stationary_h": 1.6114420340534186,
+    "max_speed_kn": 17.999997833769097,
+    "high_propulsion_h": 16.208097731736864,
+    "high_propulsion_low_speed_high_wave_h": 2.74166666666666,
+    "acceleration_range_kn_per_h": [
+      -24.005402453763658,
+      24.000000000000107
+    ],
+    "existing_terminal_zero_speed_snap_events": [
+      {
+        "time_h": 28.432263347952453,
+        "residual_speed_kn": 2.6874995150527603e-05,
+        "raw_difference_acceleration": -24.003565930340525
+      },
+      {
+        "time_h": 107.02674625390368,
+        "residual_speed_kn": 4.5010316107485515e-05,
+        "raw_difference_acceleration": -24.005402453763658
+      }
+    ],
+    "track_intersects_land_buffer": false,
+    "decision_seconds_sum_recorded": 6388.862908499781,
+    "decision_seconds_max": 311.9542779000476,
+    "chosen_command_counts": {
+      "0": 0,
+      "6": 0,
+      "12": 29,
+      "18": 7
+    },
+    "waiting_decisions": 0,
+    "executed_wait_h": 1.5677366520475466,
+    "peak_wave_observation": {
+      "time_h": 31.28333333333333,
+      "wave_m": 5.80063535136016,
+      "speed_kn": 4.1807019737347035,
+      "q_command_kn": 18.0
+    },
+    "main_dp_counters": [
+      137121375792,
+      136861332085,
+      260043707,
+      12252042715,
+      1508388268
+    ],
+    "timing_note": "Initial interrupted/restarted decisions exclude pre-restart wall time; counters cover main DP only, not continuous rollout queries."
+  },
+  "calm": {
+    "mode": "calm",
+    "arrived": true,
+    "steps": 37,
+    "arrival_h": 109.59120230469239,
+    "distance_nm": 1259.198301411151,
+    "fuel_t": 51.38474565993933,
+    "operating_cost_usd": 85626.4485483098,
+    "late_cost_usd": 0,
+    "total_cost_usd": 85626.4485483098,
+    "max_wave_m": 0.0,
+    "wave_exposure_h": {
+      "2": 0.0,
+      "4": 0.0,
+      "6": 0.0
+    },
+    "near_stationary_h": 0.016666666666673297,
+    "max_speed_kn": 16.68636968632959,
+    "high_propulsion_h": 0.2790396388186078,
+    "high_propulsion_low_speed_high_wave_h": 0.0,
+    "acceleration_range_kn_per_h": [
+      -24.000000000000107,
+      24.0
+    ],
+    "existing_terminal_zero_speed_snap_events": [],
+    "track_intersects_land_buffer": false,
+    "decision_seconds_sum_recorded": 4689.0850649003405,
+    "decision_seconds_max": 157.15499479998834,
+    "chosen_command_counts": {
+      "0": 0,
+      "6": 0,
+      "12": 36,
+      "18": 1
+    },
+    "waiting_decisions": 0,
+    "executed_wait_h": 0,
+    "peak_wave_observation": {
+      "time_h": 0.0,
+      "wave_m": 0.0,
+      "speed_kn": 0.0,
+      "q_command_kn": 12.0
+    },
+    "main_dp_counters": [
+      18890715684,
+      18890715684,
+      0,
+      0,
+      0
+    ],
+    "timing_note": "Initial interrupted/restarted decisions exclude pre-restart wall time; counters cover main DP only, not continuous rollout queries."
+  },
+  "difference_typhoon_minus_calm": {
+    "arrival_h": -2.5644560507887064,
+    "distance_nm": -7.324245085725579,
+    "fuel_t": 18.83332906523674,
+    "total_cost_usd": 10017.76941374768
+  }
+}
