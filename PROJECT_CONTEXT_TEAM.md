@@ -1,3 +1,5 @@
+> **공개 사용자 안내:** 로컬 Clone·설치·실험에는 GitHub 계정·로그인·초대를 요구하지 않는다. 공개 설치 지침은 docs/AI_ONBOARDING.md, 요청문은 docs/INSTALL_PROMPT.md다. 온라인 기여는 CONTRIBUTING.md를 따른다.
+
 > **현재 팀 기본 (v0.3.0-draft.1):** 육각 확장판 extensions/hex_v03에서 별도 가상환경으로 실행한다. 그 폴더의 AGENTS.md와 README.md가 현재 모델/기본 알고리즘 지침이다. 아래 루트 실행·사각 설정 설명은 이전 v0.2.0-draft.1 재현에 적용한다. 버전관리·태그 보존 규칙은 공통이다.
 
 # 팀 공유 초안 — 다음 작업 인계

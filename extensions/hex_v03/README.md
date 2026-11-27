@@ -1,6 +1,6 @@
 # BAAI Maritime DSS — 육각·연속 운항 확장판
 
-**팀 기본 확장판: v0.3.0-draft.1 / Python 패키지 0.3.0.dev1.** 기존 공유 기준 `v0.2.0-draft.1`과 별도로 보존하는 확장 모델이다.
+**공개 기본 확장판: v0.3.0-draft.1 / Python 패키지 0.3.0.dev1.** 기존 공유 기준 `v0.2.0-draft.1`과 별도로 보존하는 확장 모델이다.
 
 육각 해상망, 연속적인 실제 위치·속도·방향, 추진 명령과 파고 저항, 가감속·선회, 임의 상태 재계획을 결합한다. 현재 관측에서 9개 태풍 예측을 생성하고, 국소 후보의 초기비용과 시나리오별 장기 DP 비용을 합친 mean–CVaR로 선택한다. 기본 λ=0, α=0.8이며 기상 API·AI API·CPLEX는 필요 없다.
 
@@ -11,9 +11,11 @@
 | 전체 수학적 모델: 상태·후보·동역학·목적함수·시나리오 | [수학적 구조](docs/CURRENT_MATHEMATICAL_STRUCTURE_KO.md) |
 | 알고리즘 수식·하한 증명·최적성 범위·문제별 기본값 | [확정 알고리즘 명세](docs/VERSION_SPEC.md) |
 | 기존 사각 baseline과의 차이, 중간 육각 엔진과의 구분 | [변경 비교표](docs/BASELINE_DIFF.md) |
-| 설치·실험·결과·재개·AI 인계 | [팀원 실행 안내](docs/TEAM_HEX_GUIDE.md) |
+| 설치·실험·결과·재개·AI 인계 | [사용자 실행 안내](docs/TEAM_HEX_GUIDE.md) |
 | 보존한 실험 실측과 현재 검증 범위 | [검증 기록](docs/RELEASE_VALIDATION.md) |
 | GitHub에 합치는 경로·검토·PR 초안·배포 주의 | [업로드 준비](docs/UPLOAD_PREPARATION.md) |
+
+공개 저장소의 로컬 설치·실험에는 GitHub 계정·로그인·초대가 필요 없습니다. 공통 [AI 설치 안내](../../docs/AI_ONBOARDING.md)와 [기여 안내](../../CONTRIBUTING.md)를 참고하세요.
 
 ## 설치 및 검증
 
